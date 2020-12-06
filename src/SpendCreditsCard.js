@@ -117,7 +117,7 @@ class SpendCreditsCard extends Component {
             >
       <div>Spend some eco-credits ({this.state.ecocredits}) <br></br></div>
       
-      <div>What would like lik to spend eco-credits on?</div>
+      <div>What would like to spend eco-credits on?</div>
       
       <table><tr>
         <td>
@@ -214,7 +214,7 @@ class SpendCreditsCard extends Component {
             >
       <div>Spend some eco-credits, you have a balance of: ({this.state.ecocredits}) <br></br></div>
       
-      <div>What would like lik to spend eco-credits on?</div>
+      <div>What would like to spend eco-credits on?</div>
       
       
       <table>
