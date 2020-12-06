@@ -1,0 +1,102 @@
+import React, { Component } from "react";
+
+
+import Dashboard2 from "./DashBoardLogEcoCredits";
+import Dashboard from "./Dashboard";
+
+import DashBoardLogEcoCredits from "./DashBoardLogEcoCredits";
+
+import DashBoardSpendEcoCredits from "./DashBoardSpendEcoCredits";
+import SocialCardDemo from "./SocialCardDemo";
+//import EcoCard from "./EcoCard";
+
+//import Trees from "./Trees";
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      choice: "None",
+      variableForA: 10,
+      variableForB: 20,
+      variableForC: 30,
+      variableForD: 40
+    };
+
+    this.buttonAAction = this.buttonAAction.bind(this);
+    this.buttonBAction = this.buttonBAction.bind(this);
+    this.buttonCAction = this.buttonCAction.bind(this);
+    this.buttonDAction = this.buttonDAction.bind(this);
+    this.buttonHomeAction = this.buttonHomeAction.bind(this);
+  } // end constructor
+
+  buttonAAction() {
+    let curA = this.state.variableForA;
+    curA = curA + 10;
+    this.setState({ variableForA: curA });
+    this.setState({ choice: "A" });
+    console.log("A BUTTON PRESSED:LOG");
+  }
+  buttonBAction() {
+    let curB = this.state.variableForB;
+    curB = curB + 10;
+    this.setState({ variableForB: curB });
+
+    this.setState({ choice: "B" });
+  }
+  buttonCAction() {
+    let curC = this.state.variableForC;
+    curC = curC + 10;
+    this.setState({ variableForC: curC });
+
+    this.setState({ choice: "C" });
+  }
+  buttonDAction() {
+    let curD = this.state.variableForD;
+    curD = curD + 10;
+    this.setState({ variableForD: curD });
+    this.setState({ choice: "D" });
+  }
+  buttonHomeAction() {
+    this.setState({ choice: "None" });
+    this.setState({ variableForB: 0 });
+    this.setState({ variableForA: 0 });
+    this.setState({ variableForC: 0 });
+    this.setState({ variableForD: 0 });
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Dashboard/>
+        <div className="root"></div>
+        <button onClick={this.buttonHomeAction}>Home</button>
+        <button onClick={this.buttonAAction}>ALog them</button>
+        <button onClick={this.buttonBAction}>Show B</button>
+        <button onClick={this.buttonCAction}>DashBoardSpendEcoCredits</button>
+        <button onClick={this.buttonDAction}>Show Dashboard D</button>
+
+        {this.state.choice === "A" && (
+          <DashBoardLogEcoCredits varA={this.state.variableForA} />
+        )}
+        {this.state.choice === "B" && (
+          <SocialCardDemo varB={this.state.variableForB} />
+        )}
+        {this.state.choice === "C" && (
+          <DashBoardSpendEcoCredits varC={this.state.variableForC} />
+        )}
+        {this.state.choice === "D" && (
+          <Dashboard2 varD={this.state.variableForD} />
+        )}
+      </div>
+    ); // end of return statement
+  } // end of render function
+} // end of class
+
+//**************************************************//
+
+//**************************************************//
+
+//**************************************************//
+
+export default App;
