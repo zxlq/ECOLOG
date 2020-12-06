@@ -2,7 +2,7 @@ import * as React from "react";
 import { Component } from "react";
 import clsx from "clsx";
 import { withStyles } from "@material-ui/core/styles";
-import Drawer from "@material-ui/core/Drawer";
+ import Drawer from "@material-ui/core/Drawer";
 import NoteAddIcon from "@material-ui/icons/NoteAdd";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -29,6 +29,8 @@ import DashboardIcon from "@material-ui/icons/Dashboard";
 import CardContentHandler1 from "./CardContentHandler1";
 import CardContentHandler2 from "./CardContentHandler2";
 import CardContentHandler3 from "./CardContentHandler3";
+
+import ecocredits from "./SpendCreditsCard";
 
 function Copyright() {
   return (
@@ -137,8 +139,9 @@ class App extends Component {
     this.state = {
       open: false,
       choice: "None",
-      variableForDashBoard: 10
+      UserCredits: 99
     };
+
     this.handleToggle = this.handleToggle.bind(this);
     this.ButtonCardContentHandler1Action = this.ButtonCardContentHandler1Action.bind(
       this
@@ -152,30 +155,30 @@ class App extends Component {
   }
 
   ButtonCardContentHandler1Action() {
-    let curA = this.state.variableForDashBoard;
-
-    this.setState({ variableForDashBoard: curA });
+    let creditsA = this.state.UserCredits;
+    
+    creditsA = creditsA + 20;
+    this.setState({ UserCredits: creditsA });
     this.setState({ choice: "A" });
-    //console.log(" BUTTON PRESSED:LOG");
+    console.log(creditsA + " topped up by x20 test");
   }
 
   ButtonCardContentHandler2Action() {
-    let curB = this.state.variableForLog;
+    //let curB = this.state.variableForLog;
 
-    this.setState({ variableForDashBoard: curB });
+    //this.setState({ UserCredits: curB });
     this.setState({ choice: "B" });
   }
 
   ButtonCardContentHandler3Action() {
-    let curC = this.state.variableForSpend;
+    //let curC = this.state.variableForSpend;
 
-    this.setState({ variableForDashBoard: curC });
+    //this.setState({ UserCredits: curC });
     this.setState({ choice: "C" });
   }
 
   handleToggle = () => {
     this.setState({ open: !this.state.open });
-    console.log("Handle toggle!");
   };
 
   render() {
@@ -208,15 +211,15 @@ class App extends Component {
             </IconButton>
 
             <Typography
-              component="h1"
-              variant="h6"
+              component="h9"
+              variant="h9"
               color="inherit"
               noWrap
               className={classes.title}
             >
               EcoLog Carbon Offset Dashboard
             </Typography>
-
+            <div>Credits:{this.state.UserCredits}</div>
             <IconButton color="inherit">
               <Badge badgeContent={0} color="secondary">
                 <NotificationsIcon />
@@ -250,14 +253,14 @@ class App extends Component {
             </ListItem>
             <ListItem button onClick={this.ButtonCardContentHandler2Action}>
               <ListItemIcon>
-                <NoteAddIcon />
+                <CreditCardIcon />
               </ListItemIcon>
               <ListItemText primary="Log Eco Credits" />
             </ListItem>
 
             <ListItem button onClick={this.ButtonCardContentHandler3Action}>
               <ListItemIcon>
-                <CreditCardIcon />
+                <NoteAddIcon />
               </ListItemIcon>
               <ListItemText primary="Spend Eco Credits" />
             </ListItem>
@@ -270,7 +273,7 @@ class App extends Component {
 
           <Container maxWidth="lg" className={classes.container}>
             {this.state.choice === "A" && (
-              <CardContentHandler1 varA={this.state.variableForDashBoard} />
+              <CardContentHandler1 varA={this.state.UserCredits} />
             )}
 
             {this.state.choice === "B" && (
