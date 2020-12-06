@@ -9,7 +9,7 @@ import EcoCard from "./DashboardCards/EcoCard";
 import SocialCardDemo from "./DashboardCards/SocialCardDemo";
 
 //This displays the DASHBOARD CARDS and is called from app.js in the main div around line 234
-class CardContent1 extends Component {
+class CardContentHandler1 extends Component {
   render() {
     return (
       <Grid container spacing={1}>
@@ -36,4 +36,4 @@ class CardContent1 extends Component {
     );
   }
 }
-export default CardContent1;
+export default CardContentHandler1;

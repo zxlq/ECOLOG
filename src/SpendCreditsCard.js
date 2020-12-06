@@ -22,7 +22,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-export const A_LogCreditsCard = React.memo(function MusicCard() {
+export const SpendCreditsCard = React.memo(function MusicCard() {
   const styles = useStyles();
   const mediaStyles = useFourThreeCardMediaStyles();
   const textCardContentStyles = useN04TextInfoContentStyles();
@@ -31,20 +31,20 @@ export const A_LogCreditsCard = React.memo(function MusicCard() {
     <Card className={cx(styles.root, shadowStyles.root)}>
       <CardMedia
         className={cx(styles.media, mediaStyles.root)}
-        image={"https://images.unsplash.com/photo-1526078569927-a1255bd01079?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80"}
+        image={"https://images.unsplash.com/photo-1579170053380-58064b2dee67?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1651&q=80"}
         
       />
       <CardContent>
         <TextInfoContent
           classes={textCardContentStyles}
           overline={"EcoLog"}
-          heading={"LOG YOUR CREDITS"}
+          heading={"SPEND YOUR CREDITS"}
           body={
-            "You can log you credits here!"
+            "You can spend you credits here!"
           }
         />
       </CardContent>
     </Card>
   );
 });
-export default A_LogCreditsCard;
+export default SpendCreditsCard;

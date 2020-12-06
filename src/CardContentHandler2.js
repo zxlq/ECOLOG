@@ -4,11 +4,11 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 
 
-import A_LogCreditsCard from "./A_LogCreditsCard";
+import LogCreditsCard from "./LogCreditsCard";
 
 
 //Call a card with content to LOG credits
-class CardContent2 extends Component {
+class CardContentHandler2 extends Component {
   render() {
     return (
 
@@ -19,7 +19,7 @@ class CardContent2 extends Component {
 
             <Grid item xs={12} md={12} lg={12}>
               <Paper>
-              <A_LogCreditsCard />
+              <LogCreditsCard />
               </Paper>
             </Grid>
 
@@ -30,4 +30,4 @@ class CardContent2 extends Component {
 )
     }
   }
-export default CardContent2
+export default CardContentHandler2

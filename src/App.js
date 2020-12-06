@@ -2,8 +2,8 @@ import * as React from "react";
 import { Component } from "react";
 import clsx from "clsx";
 import { withStyles } from "@material-ui/core/styles";
- import Drawer from "@material-ui/core/Drawer";
- import NoteAddIcon from "@material-ui/icons/NoteAdd";
+import Drawer from "@material-ui/core/Drawer";
+import NoteAddIcon from "@material-ui/icons/NoteAdd";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import List from "@material-ui/core/List";
@@ -17,7 +17,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import Container from "@material-ui/core/Container";
-import CreditCardIcon from '@material-ui/icons/CreditCard';
+import CreditCardIcon from "@material-ui/icons/CreditCard";
 //side buttons
 
 import ListItem from "@material-ui/core/ListItem";
@@ -26,10 +26,9 @@ import ListItemText from "@material-ui/core/ListItemText";
 
 import DashboardIcon from "@material-ui/icons/Dashboard";
 
-
-import CardContent1 from "./CardContent1";
-import CardContent2 from "./CardContent2";
-import CardContent3 from "./CardContent3";
+import CardContentHandler1 from "./CardContentHandler1";
+import CardContentHandler2 from "./CardContentHandler2";
+import CardContentHandler3 from "./CardContentHandler3";
 
 function Copyright() {
   return (
@@ -141,12 +140,18 @@ class App extends Component {
       variableForDashBoard: 10
     };
     this.handleToggle = this.handleToggle.bind(this);
-    this.ButtonCardContent1Action = this.ButtonCardContent1Action.bind(this);
-    this.ButtonCardContent2Action = this.ButtonCardContent2Action.bind(this);
-    this.ButtonCardContent3Action = this.ButtonCardContent3Action.bind(this);
+    this.ButtonCardContentHandler1Action = this.ButtonCardContentHandler1Action.bind(
+      this
+    );
+    this.ButtonCardContentHandler2Action = this.ButtonCardContentHandler2Action.bind(
+      this
+    );
+    this.ButtonCardContentHandler3Action = this.ButtonCardContentHandler3Action.bind(
+      this
+    );
   }
 
-  ButtonCardContent1Action() {
+  ButtonCardContentHandler1Action() {
     let curA = this.state.variableForDashBoard;
 
     this.setState({ variableForDashBoard: curA });
@@ -154,14 +159,14 @@ class App extends Component {
     //console.log(" BUTTON PRESSED:LOG");
   }
 
-  ButtonCardContent2Action() {
+  ButtonCardContentHandler2Action() {
     let curB = this.state.variableForLog;
 
     this.setState({ variableForDashBoard: curB });
     this.setState({ choice: "B" });
   }
 
-  ButtonCardContent3Action() {
+  ButtonCardContentHandler3Action() {
     let curC = this.state.variableForSpend;
 
     this.setState({ variableForDashBoard: curC });
@@ -170,18 +175,22 @@ class App extends Component {
 
   handleToggle = () => {
     this.setState({ open: !this.state.open });
+    console.log("Handle toggle!");
   };
 
   render() {
     const { classes } = this.props;
 
-    const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+    //const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
     return (
       <div className={classes.root}>
         <AppBar
           position="absolute"
-          className={clsx(classes.appBar, this.open && classes.appBarShift)}
+          className={clsx(
+            classes.appBar,
+            this.state.open && classes.appBarShift
+          )}
           style={{ background: "#28c180" }}
         >
           <Toolbar className={classes.toolbar}>
@@ -197,6 +206,7 @@ class App extends Component {
             >
               <MenuIcon />
             </IconButton>
+
             <Typography
               component="h1"
               variant="h6"
@@ -206,6 +216,7 @@ class App extends Component {
             >
               EcoLog Carbon Offset Dashboard
             </Typography>
+
             <IconButton color="inherit">
               <Badge badgeContent={0} color="secondary">
                 <NotificationsIcon />
@@ -219,7 +230,7 @@ class App extends Component {
           classes={{
             paper: clsx(
               classes.drawerPaper,
-              !this.open && classes.drawerPaperClose
+              !this.state.open && classes.drawerPaperClose
             )
           }}
           open={this.open}
@@ -229,25 +240,26 @@ class App extends Component {
               <ChevronLeftIcon />
             </IconButton>
           </div>
+
           <List>
-            <ListItem button onClick={this.ButtonCardContent1Action}>
+            <ListItem button onClick={this.ButtonCardContentHandler1Action}>
               <ListItemIcon>
                 <DashboardIcon />
               </ListItemIcon>
-              <ListItemText primary="Log Eco Credits" />
+              <ListItemText primary="Show Dashboard" />
             </ListItem>
-            <ListItem button onClick={this.ButtonCardContent2Action}>
+            <ListItem button onClick={this.ButtonCardContentHandler2Action}>
               <ListItemIcon>
                 <NoteAddIcon />
               </ListItemIcon>
               <ListItemText primary="Log Eco Credits" />
             </ListItem>
 
-            <ListItem button onClick={this.ButtonCardContent3Action}>
+            <ListItem button onClick={this.ButtonCardContentHandler3Action}>
               <ListItemIcon>
                 <CreditCardIcon />
               </ListItemIcon>
-              <ListItemText primary="Log Eco Credits" />
+              <ListItemText primary="Spend Eco Credits" />
             </ListItem>
           </List>
           <Divider />
@@ -255,16 +267,17 @@ class App extends Component {
 
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
+
           <Container maxWidth="lg" className={classes.container}>
             {this.state.choice === "A" && (
-              <CardContent1 varA={this.state.variableForDashBoard} />
+              <CardContentHandler1 varA={this.state.variableForDashBoard} />
             )}
 
             {this.state.choice === "B" && (
-              <CardContent2 varB={this.state.variableForLog} />
+              <CardContentHandler2 varB={this.state.variableForLog} />
             )}
             {this.state.choice === "C" && (
-              <CardContent3 varB={this.state.variableForSpend} />
+              <CardContentHandler3 varB={this.state.variableForSpend} />
             )}
           </Container>
           <Box pt={4}>
